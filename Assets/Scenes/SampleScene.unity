@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -309,7 +310,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -340,6 +341,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6a7cebb3bef69fe8aedcce5e9e8791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTime: 0.3
+  objectToFollow: {fileID: 1898507191}
+  objectFollowOffset: {x: 0, y: 2, z: 0}
 --- !u!1 &1158013264
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,11 +589,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 700
-  velocityCap: 8
+  velocityCap: 13
   airbornAccelMultiplier: 0.2
-  jumpForce: 800
-  jumpBoostForce: 70
-  jumpBoostMax: 25
+  jumpForce: 3000
+  jumpBoostForce: 100
+  jumpBoostMax: 40
   jumpState: 0
 --- !u!61 &1898507193
 BoxCollider2D:
@@ -620,7 +636,7 @@ Rigidbody2D:
   m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: e9df83562f6f02fa89606033d2859d0d, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
