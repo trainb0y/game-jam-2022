@@ -8,6 +8,8 @@ public enum JumpState {
 
 public class PlayerController : MonoBehaviour
 {
+	public Vector2 minSize = new Vector2(0.5f, 0.5f);
+	public Vector2 maxSize = new Vector2(1.5f, 1.5f);
 	public float acceleration = 10;
 	public float velocityCap = 3;
 	public float airbornAccelMultiplier = 0.5f;
@@ -34,6 +36,13 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey(KeyCode.A)) Move(new Vector2(-acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.D)) Move(new Vector2(acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.W) && jumpState != JumpState.AIRBORNE)  Jump(); 
+		ChangeSize();
+	}
+
+	void ChangeSize() {
+		Vector2 velocity = rb.velocity.normalized * 2;
+		Vector2 size = new Vector2(Mathf.Abs(velocity.x), Mathf.Abs(velocity.y));
+		transform.localScale = Util.Vector2Clamp(size, minSize, maxSize);
 	}
 
 	void Move(Vector2 accel) {
