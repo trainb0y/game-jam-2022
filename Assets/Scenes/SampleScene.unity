@@ -858,9 +858,10 @@ MonoBehaviour:
   velocityCap: 13
   airbornAccelMultiplier: 0.2
   jumpForce: 3000
-  jumpBoostForce: 100
-  jumpBoostMax: 40
+  jumpBoostForce: 120
+  jumpBoostMax: 30
   jumpState: 0
+  jumpCount: 0
 --- !u!61 &1898507193
 BoxCollider2D:
   m_ObjectHideFlags: 0
