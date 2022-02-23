@@ -620,9 +620,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 700
   velocityCap: 8
-  airborneAccelMultiplier: 0.2
+  airbornAccelMultiplier: 0.2
   jumpForce: 800
-  grounded: 1
+  jumpBoostForce: 70
+  jumpBoostMax: 25
+  jumpState: 0
 --- !u!61 &1898507193
 BoxCollider2D:
   m_ObjectHideFlags: 0
