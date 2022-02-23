@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum JumpState {
+    GROUNDED,
+    JUMPING,
+    AIRBORNE
+}
+
 public class PlayerController : MonoBehaviour
 {
 	public float acceleration = 10;
@@ -8,9 +14,12 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce = 100;
 	public float jumpBoostForce = 5;
 	public int jumpBoostMax = 20;
-	public JumpState jumpState = JumpState.GROUNDED;
-	private Rigidbody2D rb;
+	[SerializeField()]
+	private JumpState jumpState = JumpState.GROUNDED;
+
+	[SerializeField()]
 	private int jumpCount = 0;
+	private Rigidbody2D rb;
 
 	void Awake(){rb = GetComponent<Rigidbody2D>();}
 
