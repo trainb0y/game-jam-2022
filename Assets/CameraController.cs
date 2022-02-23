@@ -8,10 +8,10 @@ public class CameraController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
-    void LateUpdate(){
+    void FixedUpdate(){
         Vector3 offsetPos = objectToFollow.position + objectFollowOffset;
         Vector3 destPos = new Vector3(offsetPos.x, offsetPos.y, transform.position.z);
-        transform.position = Vector3.SmoothDamp(transform.position,  destPos, ref velocity, smoothTime);
-   
+        transform.position = Vector3.SmoothDamp(transform.position,  destPos, ref velocity, smoothTime, Mathf.Infinity, Time.fixedDeltaTime);
+        //transform.position = Vector3.Lerp(transform.position, destPos, smoothTime);
     }
 }
