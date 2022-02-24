@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey(KeyCode.A)) Move(new Vector2(-acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.D)) Move(new Vector2(acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.W) && jumpState != JumpState.AIRBORNE)  Jump(); 
-		ChangeSize();
+		//ChangeSize();
 	}
 
 	void ChangeSize() {
