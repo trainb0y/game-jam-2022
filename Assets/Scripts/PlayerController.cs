@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections.Generic;
 public enum JumpState {
     GROUNDED,
     JUMPING,
@@ -22,8 +22,12 @@ public class PlayerController : MonoBehaviour
 	[SerializeField()]
 	private int jumpCount = 0;
 	private Rigidbody2D rb;
+	private LevelHandler lh;
 
-	void Awake(){rb = GetComponent<Rigidbody2D>();}
+	void Awake() {
+		rb = GetComponent<Rigidbody2D>();
+		lh = FindObjectOfType<LevelHandler>();
+	}
 
 	void FixedUpdate()
 	{
@@ -33,6 +37,11 @@ public class PlayerController : MonoBehaviour
 		if (Physics2D.OverlapPointAll(checkPos).Length > 0) jumpState = JumpState.GROUNDED;
         else if (jumpState != JumpState.JUMPING) jumpState = JumpState.AIRBORNE ; // reset jump state
 
+		if (Input.GetKeyDown(KeyCode.S)) {
+			int colorIndex = System.Array.IndexOf(lh.level, lh.currentColor) + 1;
+			if (colorIndex >= lh.level.Length) colorIndex = 0;
+			lh.ChangeColor(lh.level[colorIndex]);
+		}
 		if (Input.GetKey(KeyCode.A)) Move(new Vector2(-acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.D)) Move(new Vector2(acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.W) && jumpState != JumpState.AIRBORNE)  Jump(); 

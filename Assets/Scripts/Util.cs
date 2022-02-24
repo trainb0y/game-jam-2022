@@ -28,4 +28,8 @@ public static class Util
         // Honestly this is simple enough it doesn't really need its own function, but its good for readability.
         return (vector1 - vector2).sqrMagnitude;
     }
+    public static Color InvertColor(Color color) {
+        // Invert the color, ignore alpha
+        return new Color(1.0f-color.r, 1.0f-color.g, 1.0f-color.b, color.a);
+    }
 }
