@@ -551,7 +551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99ff5ecefd52c52aae4dd611aa8bb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePrefab: {fileID: 4777572532169901318, guid: 6a81fe3dbe0311cecb6aae7014371965, type: 3}
+  breakParticlePrefab: {fileID: 4777572532169901318, guid: 9e19a53f4899338ffb7cd956963c88e0, type: 3}
+  createParticlePrefab: {fileID: 4777572532169901318, guid: e9b1a947edcbc6e45a564bba0513c886, type: 3}
   level:
   - color: {r: 0, g: 0, b: 0, a: 1}
     objects:
