@@ -10,6 +10,10 @@ public class LevelHandler : MonoBehaviour
     public LevelColor currentColor;
     public float bgColorLerpSpeed = 0.3f;
 
+    public float growSpeed = 2f;
+
+    private Dictionary<GameObject, Vector3> growing = new Dictionary<GameObject, Vector3>();
+
     void Awake() {
     
         foreach (LevelColor lc in level) {
@@ -30,11 +34,31 @@ public class LevelHandler : MonoBehaviour
 
     void Update() {
         Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, Util.InvertColor(currentColor.color), bgColorLerpSpeed);
+        Grow();
+    }
+
+    void Grow() {
+        // New growing system seems dumb but we cant modify growing while iterating over itad
+        Dictionary<GameObject, Vector3> newGrowing = new Dictionary<GameObject, Vector3>();
+        foreach (GameObject o in growing.Keys) {
+            o.transform.localScale = Vector3.Lerp(o.transform.localScale, growing[o], Time.deltaTime * growSpeed);
+            if (o.transform.localScale.magnitude < growing[o].magnitude - 0.5f) newGrowing[o] = growing[o];
+            else {o.transform.localScale = growing[o];}
+        }
+        growing = newGrowing;
+    }
+
+    void BeginGrowing(GameObject o) {
+        try {o.transform.localScale = growing[o];}
+        catch (KeyNotFoundException) {}
+        growing[o] = o.transform.localScale;
+        o.transform.localScale = Vector3.zero;
     }
 
     void Enable(GameObject o) {
         o.GetComponent<SpriteRenderer>().enabled = true;
         o.GetComponent<BoxCollider2D>().enabled = true;
+        BeginGrowing(o);
     }
     void Disable(GameObject o) {
         o.GetComponent<SpriteRenderer>().enabled = false;
