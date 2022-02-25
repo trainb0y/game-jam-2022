@@ -6,6 +6,7 @@ public class LevelHandler : MonoBehaviour
 {
     public Transform spawnPoint;
     public int minY = -10;
+    public int particleDensity = 10;
     public GameObject breakParticlePrefab;
     // Yes, we could just use a dictionary but unity doesn't like dictionaries
     public LevelColor[] level;
@@ -73,7 +74,11 @@ public class LevelHandler : MonoBehaviour
         o.GetComponent<BoxCollider2D>().enabled = false;
         ParticleSystem particles = o.transform.Find(breakParticlePrefab.name).gameObject.GetComponent<ParticleSystem>();
         var main = particles.main;
+        var emission = particles.emission;
         main.startColor = Util.InvertColor(currentColor.color); // hacky solution. might cause issues if there are more than just black/white
+        var burst = emission.GetBurst(0);
+        burst.count = o.transform.lossyScale.x * o.transform.lossyScale.y * particleDensity;
+        emission.SetBurst(0, burst);
         particles.Play();
         if (o.GetComponent<MovingPlatform>() != null) {
             player.transform.parent = null;
