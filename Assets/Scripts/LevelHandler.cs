@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelHandler : MonoBehaviour
 {
     public GameObject breakParticlePrefab;
-    public GameObject createParticlePrefab;
     // Yes, we could just use a dictionary but unity doesn't like dictionaries
     public LevelColor[] level;
     public LevelColor currentColor;
@@ -15,13 +14,13 @@ public class LevelHandler : MonoBehaviour
     
         foreach (LevelColor lc in level) {
             foreach (GameObject o in lc.objects) {
-                foreach (GameObject prefab in  new GameObject[]{createParticlePrefab,  breakParticlePrefab}) {
-                    GameObject particleObject = Instantiate(prefab);
-                    particleObject.name = prefab.name; // avoid the "(clone)" part
-                    particleObject.transform.parent = o.transform;
-                    particleObject.transform.localScale = new Vector3(1, 1, 1);
-                    particleObject.transform.localPosition = new Vector3(0, 0, 0);
-                }
+                
+                GameObject particleObject = Instantiate(breakParticlePrefab);
+                particleObject.name = breakParticlePrefab.name; // avoid the "(clone)" part
+                particleObject.transform.parent = o.transform;
+                particleObject.transform.localScale = new Vector3(1, 1, 1);
+                particleObject.transform.localPosition = new Vector3(0, 0, 0);
+                
                 o.GetComponent<SpriteRenderer>().color = lc.color;
                 Disable(o);
             }
@@ -36,10 +35,6 @@ public class LevelHandler : MonoBehaviour
     void Enable(GameObject o) {
         o.GetComponent<SpriteRenderer>().enabled = true;
         o.GetComponent<BoxCollider2D>().enabled = true;
-        ParticleSystem particles = o.transform.Find(createParticlePrefab.name).gameObject.GetComponent<ParticleSystem>();
-        var main = particles.main;
-        main.startColor = currentColor.color;
-        particles.Play();
     }
     void Disable(GameObject o) {
         o.GetComponent<SpriteRenderer>().enabled = false;

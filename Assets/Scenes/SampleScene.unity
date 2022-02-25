@@ -552,7 +552,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakParticlePrefab: {fileID: 4777572532169901318, guid: 9e19a53f4899338ffb7cd956963c88e0, type: 3}
-  createParticlePrefab: {fileID: 4777572532169901318, guid: e9b1a947edcbc6e45a564bba0513c886, type: 3}
   level:
   - color: {r: 0, g: 0, b: 0, a: 1}
     objects:
