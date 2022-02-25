@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class LevelHandler : MonoBehaviour
 {
+    public Transform spawnPoint;
+    public int minY = -10;
     public GameObject breakParticlePrefab;
     // Yes, we could just use a dictionary but unity doesn't like dictionaries
     public LevelColor[] level;
     public LevelColor currentColor;
     public float bgColorLerpSpeed = 0.3f;
-
     public float growSpeed = 2f;
 
     private Dictionary<GameObject, Vector3> growing = new Dictionary<GameObject, Vector3>();
 
+    private GameObject player;
+
     void Awake() {
-    
+        player = FindObjectOfType<PlayerController>().gameObject;
         foreach (LevelColor lc in level) {
             foreach (GameObject o in lc.objects) {
                 
@@ -41,6 +44,7 @@ public class LevelHandler : MonoBehaviour
         // New growing system seems dumb but we cant modify growing while iterating over itad
         Dictionary<GameObject, Vector3> newGrowing = new Dictionary<GameObject, Vector3>();
         foreach (GameObject o in growing.Keys) {
+            if (o.GetComponent<MovingPlatform>() != null) {player.transform.parent=null;} // otherwise the player might grow too lol
             o.transform.localScale = Vector3.Lerp(o.transform.localScale, growing[o], Time.deltaTime * growSpeed);
             if (o.transform.localScale.magnitude < growing[o].magnitude - 0.5f) newGrowing[o] = growing[o];
             else {o.transform.localScale = growing[o];}
@@ -58,6 +62,10 @@ public class LevelHandler : MonoBehaviour
     void Enable(GameObject o) {
         o.GetComponent<SpriteRenderer>().enabled = true;
         o.GetComponent<BoxCollider2D>().enabled = true;
+        if (o.GetComponent<MovingPlatform>() != null) {
+            player.transform.parent = null;
+            o.SetActive(true);
+        }
         BeginGrowing(o);
     }
     void Disable(GameObject o) {
@@ -67,6 +75,10 @@ public class LevelHandler : MonoBehaviour
         var main = particles.main;
         main.startColor = Util.InvertColor(currentColor.color); // hacky solution. might cause issues if there are more than just black/white
         particles.Play();
+        if (o.GetComponent<MovingPlatform>() != null) {
+            player.transform.parent = null;
+            o.SetActive(false);
+        }
     }
 
     public void ChangeColor(LevelColor color) {
