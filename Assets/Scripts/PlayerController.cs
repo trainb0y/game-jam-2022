@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 		// Handle resetting jump
-		Vector2 checkPos = new Vector2(transform.position.x, transform.position.y - ((transform.localScale.y / 2)) - 0.1f);
+		Vector2 checkPos = new Vector2(transform.position.x, transform.position.y - ((transform.lossyScale.y / 2)) - 0.1f);
 		// checkPos is the position to check whether it is in the ground. hopefully this works for all sizes
 		if (Physics2D.OverlapPointAll(checkPos).Length > 0) jumpState = JumpState.GROUNDED;
         else if (jumpState != JumpState.JUMPING) jumpState = JumpState.AIRBORNE ; // reset jump state
