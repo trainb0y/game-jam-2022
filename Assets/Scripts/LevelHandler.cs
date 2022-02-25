@@ -62,7 +62,7 @@ public class LevelHandler : MonoBehaviour
 
     void Enable(GameObject o) {
         o.GetComponent<SpriteRenderer>().enabled = true;
-        o.GetComponent<BoxCollider2D>().enabled = true;
+        foreach (BoxCollider2D collider in o.GetComponents<BoxCollider2D>()) collider.enabled = true;
         if (o.GetComponent<MovingPlatform>() != null) {
             player.transform.parent = null;
             o.SetActive(true);
@@ -71,7 +71,7 @@ public class LevelHandler : MonoBehaviour
     }
     void Disable(GameObject o) {
         o.GetComponent<SpriteRenderer>().enabled = false;
-        o.GetComponent<BoxCollider2D>().enabled = false;
+        foreach (BoxCollider2D collider in o.GetComponents<BoxCollider2D>()) collider.enabled = false;
         ParticleSystem particles = o.transform.Find(breakParticlePrefab.name).gameObject.GetComponent<ParticleSystem>();
         var main = particles.main;
         var emission = particles.emission;
@@ -82,7 +82,6 @@ public class LevelHandler : MonoBehaviour
         particles.Play();
         if (o.GetComponent<MovingPlatform>() != null) {
             player.transform.parent = null;
-            o.SetActive(false);
         }
     }
 
