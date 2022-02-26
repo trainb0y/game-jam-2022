@@ -41,9 +41,7 @@ public class PlayerController : MonoBehaviour
 		if (Physics2D.LinecastNonAlloc(startPos, endPos, new RaycastHit2D[1]) > 0) jumpState = JumpState.GROUNDED;
         else if (jumpState != JumpState.JUMPING) jumpState = JumpState.AIRBORNE ; // reset jump state
 
-		if (Input.GetKeyDown(KeyCode.S)) {
-			if (Time.time - lastSwitch > switchCooldown) lh.NextColor();
-		}
+		if (Input.GetKey(KeyCode.S)) {if (Time.time - lastSwitch > switchCooldown) { lh.NextColor(); lastSwitch = Time.time;}}
 		if (Input.GetKey(KeyCode.A)) Move(new Vector2(-acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.D)) Move(new Vector2(acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.W) && jumpState != JumpState.AIRBORNE)  Jump(); 
