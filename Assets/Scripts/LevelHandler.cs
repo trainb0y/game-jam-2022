@@ -14,18 +14,22 @@ public class LevelHandler : MonoBehaviour
     public LevelColor[] level;
     public LevelColor currentColor;
     public float bgColorLerpSpeed = 0.3f;
+    public float fgColorLerpSpeed = 0.4f;
     public float growSpeed = 2f;
 
     private Dictionary<GameObject, Vector3> growing = new Dictionary<GameObject, Vector3>();
 
     private GameObject player;
+    private SpriteRenderer playerRenderer; // cache it so we don't need to getcomponent it every frame
 
     void Awake() {
         player = FindObjectOfType<PlayerController>().gameObject;
-        
+        playerRenderer = player.GetComponent<SpriteRenderer>();
+        currentColor = level[0];
         LevelColor lastLevel = level[0];
         foreach (LevelColor lc in level) {
             lc.nextColor = lastLevel;
+            lastLevel = lc;
             foreach (GameObject o in lc.objects) {
                 foreach (GameObject prefab in new GameObject[]{breakParticlePrefab, outlineParticlePrefab}) {
                     GameObject particleObject = Instantiate(prefab);
@@ -35,17 +39,17 @@ public class LevelHandler : MonoBehaviour
                     particleObject.transform.localPosition = new Vector3(0, 0, 0);
                 }
                 
-                o.GetComponent<SpriteRenderer>().color = lc.color;
+                o.GetComponent<SpriteRenderer>().color = lc.scheme.main;
                 Disable(o);
             }
         }
-        level[0].nextColor = level[level.Length-1]; // theres probably a cleaner away
-        currentColor = level[0];
+        level[0].nextColor = level[level.Length-1]; // theres probably a cleaner away also duplicated twice
         NextColor();
     }
 
     void Update() {
-        Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, Util.InvertColor(currentColor.color), bgColorLerpSpeed);
+        Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, currentColor.scheme.background, bgColorLerpSpeed);
+        playerRenderer.color = Color.Lerp(playerRenderer.color, currentColor.scheme.special, fgColorLerpSpeed);
         Grow();
     }
 
@@ -89,7 +93,7 @@ public class LevelHandler : MonoBehaviour
         ParticleSystem particles = o.transform.Find(breakParticlePrefab.name).gameObject.GetComponent<ParticleSystem>();
         var main = particles.main;
         var emission = particles.emission;
-        main.startColor = Util.InvertColor(currentColor.color); // hacky solution. might cause issues if there are more than just black/white
+        main.startColor = currentColor.nextColor.scheme.main; // big assumption here
         var burst = emission.GetBurst(0);
         burst.count = o.transform.lossyScale.x * o.transform.lossyScale.y * breakParticleDensity;
         emission.SetBurst(0, burst);
@@ -101,7 +105,7 @@ public class LevelHandler : MonoBehaviour
         var main = particles.main;
         var emission = particles.emission;
         emission.rateOverTime = outlineParticleDensity * ((transform.lossyScale.x * 2) + (transform.lossyScale.y * 2));
-        main.startColor = Util.InvertColor(currentColor.color); // hacky solution. might cause issues if there are more than just black/white
+        main.startColor = currentColor.nextColor.scheme.main; // big assumption here
         particles.Play();
     }
 

@@ -590,19 +590,29 @@ MonoBehaviour:
   outlineParticleDensity: 50
   outlineParticlePrefab: {fileID: 21838984116540439, guid: e1019ab364fde7f198afdd0a21e7e29d, type: 3}
   level:
-  - color: {r: 0, g: 0, b: 0, a: 1}
+  - scheme:
+      main: {r: 0, g: 0, b: 0, a: 1}
+      background: {r: 1, g: 1, b: 1, a: 1}
+      special: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
     objects:
     - {fileID: 479961088}
     - {fileID: 163637749}
-  - color: {r: 1, g: 1, b: 1, a: 1}
+  - scheme:
+      main: {r: 0.15294118, g: 0.7411765, b: 1, a: 1}
+      background: {r: 0.03529412, g: 0.40392157, b: 0.56078434, a: 1}
+      special: {r: 0.85882354, g: 0.5137255, b: 0.11372549, a: 1}
     objects:
     - {fileID: 1192701323}
     - {fileID: 734074858}
     - {fileID: 1050491057}
   currentColor:
-    color: {r: 1, g: 1, b: 1, a: 0}
+    scheme:
+      main: {r: 0, g: 0, b: 0, a: 0}
+      background: {r: 0, g: 0, b: 0, a: 0}
+      special: {r: 0, g: 0, b: 0, a: 0}
     objects: []
   bgColorLerpSpeed: 0.3
+  fgColorLerpSpeed: 0.4
   growSpeed: 5
 --- !u!4 &708106268
 Transform:
@@ -1198,12 +1208,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSize: {x: 1, y: 0.8}
   maxSize: {x: 1, y: 1.2}
-  acceleration: 700
+  acceleration: 500
   velocityCap: 13
   airbornAccelMultiplier: 0.2
   jumpForce: 3000
   jumpBoostForce: 120
   jumpBoostMax: 30
+  switchCooldown: 0.2
   jumpState: 0
   jumpCount: 0
 --- !u!61 &1898507193

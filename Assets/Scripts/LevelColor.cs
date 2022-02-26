@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable()]
 public class LevelColor {
-    public Color color;
+    public ColorScheme scheme;
     public GameObject[] objects;
     public LevelColor nextColor;
 }
