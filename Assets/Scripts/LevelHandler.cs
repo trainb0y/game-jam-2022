@@ -13,10 +13,12 @@ public class LevelHandler : MonoBehaviour
     public GameObject outlineParticlePrefab;
     // Yes, we could just use a dictionary but unity doesn't like dictionaries
     public LevelColor[] level;
+    private List<SpriteRenderer> permanentObjectRenderers = new List<SpriteRenderer>();
     public LevelColor currentColor;
     public float bgColorLerpSpeed = 0.3f;
     public float fgColorLerpSpeed = 0.4f;
     public float growSpeed = 2f;
+    public GameObject permanentParent;
 
     private Dictionary<GameObject, Vector3> growing = new Dictionary<GameObject, Vector3>();
 
@@ -32,10 +34,19 @@ public class LevelHandler : MonoBehaviour
         spawnPointRenderer = spawnPoint.GetComponent<SpriteRenderer>();
         spawnPos = spawnPoint.transform.position + new Vector3(0,1,0);
         currentColor = level[0];
+        foreach (Transform child in permanentParent.transform) {
+            permanentObjectRenderers.Add(child.gameObject.GetComponent<SpriteRenderer>());
+        }
         LevelColor lastLevel = level[0];
         foreach (LevelColor lc in level) {
             lc.nextColor = lastLevel;
             lastLevel = lc;
+            List<GameObject> children = new List<GameObject>();
+            foreach (Transform child in lc.parentObject.transform){
+                children.Add(child.gameObject);
+                
+            } 
+            lc.objects = children.ToArray();
             foreach (GameObject o in lc.objects) {
                 foreach (GameObject prefab in new GameObject[]{breakParticlePrefab, outlineParticlePrefab}) {
                     GameObject particleObject = Instantiate(prefab);
@@ -60,6 +71,10 @@ public class LevelHandler : MonoBehaviour
         playerRenderer.color = fgColor;
         spawnPointRenderer.color = fgColor;
         foreach (TextMeshPro t in worldText) t.color = fgColor;
+        Color permColor = Color.Lerp(permanentObjectRenderers[0].color, currentColor.scheme.permanent, fgColorLerpSpeed);
+        foreach (SpriteRenderer r in permanentObjectRenderers) {
+            r.color = permColor;
+        }
         Grow();
     }
 
@@ -114,6 +129,10 @@ public class LevelHandler : MonoBehaviour
         ParticleSystem particles = o.transform.Find(outlineParticlePrefab.name).gameObject.GetComponent<ParticleSystem>();
         var main = particles.main;
         var emission = particles.emission;
+        // failed attempt to fix outlines on rotated blocks
+        //var shape = particles.shape;
+        //shape.rotation = o.transform.rotation.eulerAngles;
+        //shape.scale = o.GetComponent<BoxCollider2D>().size;
         emission.rateOverTime = outlineParticleDensity * ((transform.lossyScale.x * 2) + (transform.lossyScale.y * 2));
         main.startColor = currentColor.nextColor.scheme.main; // big assumption here
         particles.Play();

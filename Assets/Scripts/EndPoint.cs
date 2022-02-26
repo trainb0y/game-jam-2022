@@ -5,10 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class EndPoint : MonoBehaviour
 {
+    public float delay;
+    private float counter = 1;
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>() != null) {
             // move to next scene
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            counter += Time.deltaTime;
+        }
+    }
+
+    void Update() {
+        if (counter > 0){
+            counter += Time.deltaTime;
+            if (counter > delay) {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }

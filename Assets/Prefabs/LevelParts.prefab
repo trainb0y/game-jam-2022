@@ -5428,6 +5428,7 @@ MonoBehaviour:
   fgColorLerpSpeed: 0.4
   growSpeed: 5
   spawnPos: {x: 0, y: 0, z: 0}
+  worldText: []
 --- !u!1 &3901304285960199279
 GameObject:
   m_ObjectHideFlags: 0
