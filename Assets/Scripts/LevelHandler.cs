@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class LevelHandler : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class LevelHandler : MonoBehaviour
     private SpriteRenderer playerRenderer; // cache it so we don't need to getcomponent it every frame
     private SpriteRenderer spawnPointRenderer; // same here
     public Vector3 spawnPos;
-    private GameObject[]
+    public TextMeshPro[] worldText;
 
     void Awake() {
         player = FindObjectOfType<PlayerController>().gameObject;
@@ -58,6 +59,7 @@ public class LevelHandler : MonoBehaviour
         Color fgColor = Color.Lerp(playerRenderer.color, currentColor.scheme.special, fgColorLerpSpeed);
         playerRenderer.color = fgColor;
         spawnPointRenderer.color = fgColor;
+        foreach (TextMeshPro t in worldText) t.color = fgColor;
         Grow();
     }
 
