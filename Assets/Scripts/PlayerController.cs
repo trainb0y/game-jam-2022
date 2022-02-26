@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 		//ChangeSize();
 
 		if (transform.position.y < lh.minY) {
-			transform.position = lh.spawnPoint.position;
+			transform.position = lh.spawnPos;
 			rb.velocity = Vector3.zero;
 		}
 	}

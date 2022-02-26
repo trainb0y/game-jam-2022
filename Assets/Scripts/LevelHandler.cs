@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelHandler : MonoBehaviour
 {
-    public Transform spawnPoint;
+    public GameObject spawnPoint;
     public int minY = -10;
     public int breakParticleDensity = 10;
     public GameObject breakParticlePrefab;
@@ -21,10 +21,14 @@ public class LevelHandler : MonoBehaviour
 
     private GameObject player;
     private SpriteRenderer playerRenderer; // cache it so we don't need to getcomponent it every frame
+    private SpriteRenderer spawnPointRenderer; // same here
+    public Vector3 spawnPos;
 
     void Awake() {
         player = FindObjectOfType<PlayerController>().gameObject;
         playerRenderer = player.GetComponent<SpriteRenderer>();
+        spawnPointRenderer = spawnPoint.GetComponent<SpriteRenderer>();
+        spawnPos = spawnPoint.transform.position + new Vector3(0,1,0);
         currentColor = level[0];
         LevelColor lastLevel = level[0];
         foreach (LevelColor lc in level) {
@@ -45,11 +49,14 @@ public class LevelHandler : MonoBehaviour
         }
         level[0].nextColor = level[level.Length-1]; // theres probably a cleaner away also duplicated twice
         NextColor();
+        player.transform.position = spawnPos;
     }
 
     void Update() {
         Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, currentColor.scheme.background, bgColorLerpSpeed);
-        playerRenderer.color = Color.Lerp(playerRenderer.color, currentColor.scheme.special, fgColorLerpSpeed);
+        Color fgColor = Color.Lerp(playerRenderer.color, currentColor.scheme.special, fgColorLerpSpeed);
+        playerRenderer.color = fgColor;
+        spawnPointRenderer.color = fgColor;
         Grow();
     }
 
