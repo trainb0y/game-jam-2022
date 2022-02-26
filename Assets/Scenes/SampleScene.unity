@@ -123,44 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &425285148174652004
+--- !u!1001 &1833200504
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 425285147329949421, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 425285147329949421, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.5
+    - target: {fileID: 425285148608023167, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
+      propertyPath: level.Array.data[0].objects.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 425285148608023167, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
-      propertyPath: level.Array.data[0].objects.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 425285148608023167, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
-      propertyPath: level.Array.data[0].objects.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 425285148608023167, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
-      propertyPath: level.Array.data[1].objects.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 425285148608023167, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
-      propertyPath: level.Array.data[1].objects.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 425285148608023167, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
-      propertyPath: level.Array.data[1].objects.Array.data[2]
-      value: 
+      propertyPath: level.Array.data[1].objects.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2917711113122665271, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
       propertyPath: m_Name
       value: LevelParts
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417248086075710975, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6679004444886072034, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
       propertyPath: m_RootOrder
