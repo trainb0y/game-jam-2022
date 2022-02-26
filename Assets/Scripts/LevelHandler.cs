@@ -118,6 +118,12 @@ public class LevelHandler : MonoBehaviour
         foreach (GameObject o in currentColor.objects) Disable(o);
         currentColor = color;
         foreach (GameObject o in currentColor.objects) Enable(o);
+
+        // Change end point color
+        ParticleSystem particles = FindObjectOfType<EndPoint>().gameObject.GetComponent<ParticleSystem>();
+        var main = particles.main;
+        main.startColor = currentColor.scheme.special;
+
     }
 
     public void NextColor() {
