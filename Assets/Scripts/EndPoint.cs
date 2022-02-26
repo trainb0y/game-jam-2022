@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EndPoint : MonoBehaviour
 {
-    public float delay;
-    private float counter = 1;
+    public float delay = 1;
+    private float counter = 0;
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>() != null) {
             // move to next scene
@@ -20,6 +20,7 @@ public class EndPoint : MonoBehaviour
             if (counter > delay) {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
+            Camera.main.transform.position += Random.insideUnitSphere * counter; 
         }
     }
 }
