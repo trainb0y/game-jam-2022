@@ -38,8 +38,10 @@ public class PlayerController : MonoBehaviour
 		Vector2 startPos = new Vector2(transform.position.x - (transform.lossyScale.x / 2), transform.position.y - ((transform.lossyScale.y / 2)) - 0.1f);
 		Vector2 endPos = new Vector2(transform.position.x + (transform.lossyScale.x / 2), transform.position.y - ((transform.lossyScale.y / 2)) - 0.1f);
 		// Debug.DrawLine(startPos, endPos);
+		Physics2D.queriesHitTriggers=false; // we don't want to be able to jump off of triggers
 		if (Physics2D.LinecastNonAlloc(startPos, endPos, new RaycastHit2D[1]) > 0) jumpState = JumpState.GROUNDED;
         else if (jumpState != JumpState.JUMPING) jumpState = JumpState.AIRBORNE ; // reset jump state
+		Physics2D.queriesHitTriggers=true;
 
 		if (Input.GetKey(KeyCode.S)) {if (Time.time - lastSwitch > switchCooldown) { lh.NextColor(); lastSwitch = Time.time;}}
 		if (Input.GetKey(KeyCode.A)) Move(new Vector2(-acceleration * Time.fixedDeltaTime, 0));
