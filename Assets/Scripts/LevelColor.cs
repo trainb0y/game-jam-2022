@@ -6,4 +6,5 @@ using UnityEngine;
 public class LevelColor {
     public Color color;
     public GameObject[] objects;
+    public LevelColor nextColor;
 }

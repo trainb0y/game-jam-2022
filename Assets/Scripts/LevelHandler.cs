@@ -22,7 +22,10 @@ public class LevelHandler : MonoBehaviour
 
     void Awake() {
         player = FindObjectOfType<PlayerController>().gameObject;
+        
+        LevelColor lastLevel = level[0];
         foreach (LevelColor lc in level) {
+            lc.nextColor = lastLevel;
             foreach (GameObject o in lc.objects) {
                 foreach (GameObject prefab in new GameObject[]{breakParticlePrefab, outlineParticlePrefab}) {
                     GameObject particleObject = Instantiate(prefab);
@@ -36,6 +39,7 @@ public class LevelHandler : MonoBehaviour
                 Disable(o);
             }
         }
+        level[0].nextColor = level[level.Length-1]; // theres probably a cleaner away
         ChangeColor(level[0]);
     }
 
@@ -109,5 +113,9 @@ public class LevelHandler : MonoBehaviour
         foreach (GameObject o in currentColor.objects) Disable(o);
         currentColor = color;
         foreach (GameObject o in currentColor.objects) Enable(o);
+    }
+
+    public void NextColor() {
+        ChangeColor(currentColor.nextColor);
     }
 }

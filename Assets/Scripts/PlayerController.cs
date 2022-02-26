@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce = 100;
 	public float jumpBoostForce = 5;
 	public int jumpBoostMax = 20;
+	public float switchCooldown = 0.1f;
 	[SerializeField()]
 	private JumpState jumpState = JumpState.GROUNDED;
 
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
 	private int jumpCount = 0;
 	private Rigidbody2D rb;
 	private LevelHandler lh;
+
+	private float lastSwitch;
 
 	void Awake() {
 		rb = GetComponent<Rigidbody2D>();
@@ -39,9 +42,7 @@ public class PlayerController : MonoBehaviour
         else if (jumpState != JumpState.JUMPING) jumpState = JumpState.AIRBORNE ; // reset jump state
 
 		if (Input.GetKeyDown(KeyCode.S)) {
-			int colorIndex = System.Array.IndexOf(lh.level, lh.currentColor) + 1;
-			if (colorIndex >= lh.level.Length) colorIndex = 0;
-			lh.ChangeColor(lh.level[colorIndex]);
+			if (Time.time - lastSwitch > switchCooldown) lh.NextColor();
 		}
 		if (Input.GetKey(KeyCode.A)) Move(new Vector2(-acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.D)) Move(new Vector2(acceleration * Time.fixedDeltaTime, 0));
