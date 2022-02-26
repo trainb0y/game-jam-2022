@@ -40,7 +40,8 @@ public class LevelHandler : MonoBehaviour
             }
         }
         level[0].nextColor = level[level.Length-1]; // theres probably a cleaner away
-        ChangeColor(level[0]);
+        currentColor = level[0];
+        NextColor();
     }
 
     void Update() {
