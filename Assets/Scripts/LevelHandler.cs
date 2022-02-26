@@ -23,6 +23,7 @@ public class LevelHandler : MonoBehaviour
     private SpriteRenderer playerRenderer; // cache it so we don't need to getcomponent it every frame
     private SpriteRenderer spawnPointRenderer; // same here
     public Vector3 spawnPos;
+    private GameObject[]
 
     void Awake() {
         player = FindObjectOfType<PlayerController>().gameObject;
