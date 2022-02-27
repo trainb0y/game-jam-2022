@@ -26,10 +26,12 @@ public class PlayerController : MonoBehaviour
 	private LevelHandler lh;
 
 	private float lastSwitch;
+	private AudioSource jumpAudio;
 
 	void Awake() {
 		rb = GetComponent<Rigidbody2D>();
 		lh = FindObjectOfType<LevelHandler>();
+		jumpAudio = GetComponent<AudioSource>();
 	}
 
 	void FixedUpdate()
@@ -79,6 +81,7 @@ public class PlayerController : MonoBehaviour
 			rb.AddForce(new Vector2(0, jumpForce * Time.fixedDeltaTime));
 			jumpState = JumpState.JUMPING;
 			jumpCount = 0;
+			jumpAudio.Play();
 		}
 	}
 }
