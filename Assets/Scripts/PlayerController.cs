@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         else if (jumpState != JumpState.JUMPING) jumpState = JumpState.AIRBORNE ; // reset jump state
 		Physics2D.queriesHitTriggers=true;
 
-		if (Input.GetKey(KeyCode.LeftShift)) {if (Time.time - lastSwitch > switchCooldown) { lh.NextColor(); lastSwitch = Time.time;}}
+		if (Input.GetKey(KeyCode.Space)) {if (Time.time - lastSwitch > switchCooldown) { lh.NextColor(); lastSwitch = Time.time;}}
 		if (Input.GetKey(KeyCode.A)) Move(new Vector2(-acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.D)) Move(new Vector2(acceleration * Time.fixedDeltaTime, 0));
 		if (Input.GetKey(KeyCode.W) && jumpState != JumpState.AIRBORNE)  Jump(); 

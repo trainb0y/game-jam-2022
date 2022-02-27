@@ -1499,7 +1499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_text
-      value: Press Shift
+      value: Press SPACE
       objectReference: {fileID: 0}
     - target: {fileID: 5604521112339492187, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_Pivot.x
