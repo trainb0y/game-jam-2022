@@ -298,15 +298,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3901304285746703671, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
       propertyPath: level.Array.data[0].scheme.special.b
-      value: 0.6415094
+      value: 0.11372547
       objectReference: {fileID: 0}
     - target: {fileID: 3901304285746703671, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
       propertyPath: level.Array.data[0].scheme.special.g
-      value: 0.5023147
+      value: 0.76636046
       objectReference: {fileID: 0}
     - target: {fileID: 3901304285746703671, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
       propertyPath: level.Array.data[0].scheme.special.r
-      value: 0
+      value: 0.85882354
       objectReference: {fileID: 0}
     - target: {fileID: 3901304285746703671, guid: 57c8cf832e9699f79aa9c4b07c92129f, type: 3}
       propertyPath: level.Array.data[1].scheme.special.b
