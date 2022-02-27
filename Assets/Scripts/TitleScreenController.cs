@@ -8,7 +8,4 @@ public class TitleScreenController : MonoBehaviour
     public void PlayButtonClicked() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public void CreditsButtonClicked() {
-
-    }
 }
