@@ -215,10 +215,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492184, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_text
       value: Hold W
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -602,10 +618,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492184, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_text
       value: A/D to Move
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492187, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1327,10 +1359,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492184, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_text
       value: W to Jump
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
@@ -1497,10 +1545,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Text (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492184, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_text
       value: Press SPACE
       objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604521112339492185, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1672131298927069021, guid: 927cb20b68beb7b9a94a34453c323d42, type: 2}
     - target: {fileID: 5604521112339492187, guid: a8e8ad52da1fd635abbf1add0bb44506, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
